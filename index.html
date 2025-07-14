@@ -364,12 +364,13 @@
 <!-- Contacto -->
 <section class="contacto" id="contacto">
   <div class="container contacto-content">
-    <h2>Contáctanos</h2>
+    <h2 id="titulo-efecto">Contáctanos</h2>
     <p class="contacto-texto">
       ¿Tienes preguntas o deseas agendar una cita? Completa el formulario y te responderemos lo antes posible.
     </p>
 
     <div class="contacto-grid">
+  
       <div class="mensaje-simple">
         <img src="img/contacto.svg" alt="Contáctanos" class="imagen-contacto" />
         <h3>¿En qué podemos ayudarte?</h3>
@@ -384,19 +385,19 @@
         <input type="email" name="correo" placeholder="Correo electrónico" required />
         <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
 
+     
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="Nuevo mensaje del sitio web">
+        <input type="hidden" name="_next" value="https://rmia1929.github.io/odontomed2/">
 
         <button type="submit">Enviar mensaje</button>
-        
       </form>
 
-  
       <iframe name="formulario-oculto" style="display:none;" onload="mostrarMensajeExito()"></iframe>
 
       <!-- Mensaje de éxito -->
       <p id="mensaje-exito" class="mensaje-exito" style="display:none;">¡Mensaje enviado correctamente!</p>
-
     </div>
   </div>
 </section>
