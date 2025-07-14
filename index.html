@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odontomed</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container nav-container">
+    <img src="img/logo.png" alt="Odontomed" class="logo" />
+
+    <!-- Botón  -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <nav>
+      <ul class="nav-list" id="navList">
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#nosotros">NOSOTROS</a></li>
+        <li><a href="#servicios">SERVICIOS</a></li>
+        <li><a href="#comunidad">COMUNIDAD</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <!-- inicio -->
+  <section class="hero" id="inicio">
+  <div class="overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-texto">
+      <h1 id="titulo-efecto" ></h1>
+      <p>Agende su cita haciendo clic en el botón abajo</p>
+      <a href="#contacto" class="boton">Agendar cita</a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Nosotros -->
+
+<section class="nosotros" id="nosotros">
+  <div class="container nosotros-content">
+    
+    <!-- Texto de presentación -->
+    <div class="nosotros-texto">
+      <h2>Sobre Nosotros</h2>
+      <p>
+        En <strong><a href="#" id="abrirModal"  class="TextoOdontomed">Odontomed</a></strong> nos apasiona cuidar tu sonrisa. Contamos con un equipo profesional altamente capacitado y tecnología de última generación para brindarte la mejor atención.<br><br>
+        Nuestro compromiso es ofrecerte una experiencia segura, cómoda y de calidad en cada visita. Trabajamos con dedicación para entender tus necesidades y brindarte tratamientos personalizados que aseguren resultados efectivos. Nos esforzamos cada día por ser tu clínica dental de confianza.
+      </p>
+    </div>
+
+    <!-- Carrusel -->
+    <div class="nosotros-imagen">
+      <div class="carrusel">
+        <button class="prev">&#10094;</button>
+        <img id="imagenCarrusel" src="img/equipo.jpg" alt="Imagen carrusel">
+        <button class="next">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para ver el video -->
+  <div id="modalVideo" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar-modal">&times;</span>
+      <h3>¿Cómo poner la pasta en tu cepillo?</h3>
+      <video id="videoModal" src="videos/presentacion.mp4" controls></video>
+    </div>
+  </div>
+
+  <!-- Script para carrusel y modal -->
+  <script>
+    const abrirModal = document.getElementById("abrirModal");
+    const modalVideo = document.getElementById("modalVideo");
+    const cerrarModal = document.querySelector(".cerrar-modal");
+    const video = document.getElementById("videoModal");
+
+    abrirModal.onclick = function(e) {
+      e.preventDefault();
+      modalVideo.style.display = "flex";
+      video.play(); // Se reproduce automáticamente
+    };
+
+    cerrarModal.onclick = function() {
+      modalVideo.style.display = "none";
+      video.pause(); // lo pausa
+      video.currentTime = 0; // lo reinicia al cerrar
+    };
+
+    window.onclick = function(e) {
+      if (e.target === modalVideo) {
+        modalVideo.style.display = "none";
+        video.pause();
+        video.currentTime = 0;
+      }
+    };
+
+    const imagenes = [
+      "img/equipo.jpg",
+      "img/equipo2.jpeg",
+      "img/equipo3.jpeg",
+      "img/equipo4.jpeg",
+      "img/equipo5.jpeg"
+    ];
+    let indice = 0;
+    const imagenCarrusel = document.getElementById("imagenCarrusel");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+
+    function mostrarImagen(index) {
+      imagenCarrusel.src = imagenes[index];
+    }
+
+    prevBtn.onclick = () => {
+      indice = (indice - 1 + imagenes.length) % imagenes.length;
+      mostrarImagen(indice);
+      reiniciarAutoplay();
+    };
+
+    nextBtn.onclick = () => {
+      indice = (indice + 1) % imagenes.length;
+      mostrarImagen(indice);
+      reiniciarAutoplay();
+    };
+
+    // Cambio automático de imagen cada 3 segundos
+    let autoplay = setInterval(() => {
+      indice = (indice + 1) % imagenes.length;
+      mostrarImagen(indice);
+    }, 3000);
+
+    function reiniciarAutoplay() {
+      clearInterval(autoplay);
+      autoplay = setInterval(() => {
+        indice = (indice + 1) % imagenes.length;
+        mostrarImagen(indice);
+      }, 3000);
+    }
+  </script>
+</section>
+
+
+  <!-- servicios -->
+<section class="servicios" id="servicios">
+  <div class="container">
+    <h2>Nuestros Servicios</h2>
+
+    <div class="cards">
+      
+      <!-- Ortodoncia -->
+      <div class="card">
+        <div class="oferta">¡Julio Patriótico!</div>
+        <img src="img/servicio1.png" alt="Ortodoncia" />
+        <h3>Ortodoncia</h3>
+        <p>Corrección de la posición de dientes y mandíbula.</p>
+      </div>
+
+      <div class="card">
+        <img src="img/servicio2.jpg" alt="Implantes" />
+        <h3>Implantes Dentales</h3>
+        <p>Reemplazo moderno de piezas dentales perdidas.</p>
+      </div>
+
+      <!-- Limpieza Dental -->
+      <div class="card">
+        <div class="oferta">¡Descuentos por Fiestas Patrias!</div>
+        <img src="img/servicio3.jpg" alt="Limpieza" />
+        <h3>Limpieza Dental</h3>
+        <p>Elimina placa y sarro para una sonrisa saludable.</p>
+      </div>
+
+      <div class="card">
+        <img src="img/servicio4.jpg" alt="Blanqueamiento" />
+        <h3>Blanqueamiento Dental</h3>
+        <p>Mejora el color de los dientes para una sonrisa brillante.</p>
+      </div>
+
+      <div class="card">
+        <img src="img/servicio5.jpg" alt="Endodoncia" />
+        <h3>Endodoncia</h3>
+        <p>Tratamiento de conductos para conservar dientes dañados.</p>
+      </div>
+
+      <div class="card">
+        <img src="img/servicio6.jpg" alt="Prótesis" />
+        <h3>Prótesis Dentales</h3>
+        <p>Rehabilitación con prótesis fijas o removibles.</p>
+      </div>
+
+      <div class="card">
+        <img src="img/servicio7.jpg" alt="Radiografía" />
+        <h3>Radiografía Dental</h3>
+        <p>Diagnóstico preciso con imágenes digitales.</p>
+      </div>
+
+      <!-- Odontopediatría -->
+      <div class="card">
+        <div class="promo">Sábados: 20% de descuento</div>
+        <img src="img/servicio8.jpg" alt="Odontopediatría" />
+        <h3>Odontopediatría</h3>
+        <p>Atención dental especializada para niños.</p>
+      </div>
+
+      <div class="card">
+        <img src="img/servicio9.jpg" alt="Cirugía" />
+        <h3>Cirugía Oral</h3>
+        <p>Extracciones y procedimientos quirúrgicos menores.</p>
+      </div>
+
+    </div> 
+  </div> 
+
+  
+</section>
+<!-- Modal de video para Servicios -->
+  <div id="serviciosModal" class="modal">
+    <div class="modal-content">
+      <span class="close-servicios">&times;</span>
+      <h3 id="serviciosModalTitle"></h3>
+      <video id="serviciosModalVideo" controls>
+        <source id="serviciosVideoSource" src="" type="video/mp4" />
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+  </div>
+<script>
+ 
+
+  const serviciosModal = document.getElementById("serviciosModal");
+  const serviciosModalTitle = document.getElementById("serviciosModalTitle");
+  const serviciosModalVideo = document.getElementById("serviciosModalVideo");
+  const serviciosVideoSource = document.getElementById("serviciosVideoSource");
+  const closeServiciosBtn = document.querySelector(".close-servicios");
+
+  const videos = {
+   "Ortodoncia": "videos/ortodoncia.mp4",
+    "Implantes Dentales": "videos/implantes dental.mp4",
+    "Limpieza Dental": "videos/limpieza dental.mp4",
+    "Blanqueamiento Dental": "videos/blanqueamiento dental.mp4",
+    "Endodoncia": "videos/endodoncia.mp4",
+    "Prótesis Dentales": "videos/protesis dental.mp4",
+    "Radiografía Dental": "videos/radiografia.mp4",
+    "Odontopediatría": "videos/odonto pediatria.mp4",
+    "Cirugía Oral": "videos/cirugia oral.mp4"
+  };
+
+  document.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const servicio = card.querySelector("h3").textContent.trim();
+      if (videos[servicio]) {
+        serviciosModalTitle.textContent = servicio;
+        serviciosVideoSource.src = videos[servicio];
+        serviciosModalVideo.load();
+        serviciosModal.style.display = "flex";
+      } else {
+        alert("Video no disponible para este servicio.");
+      }
+    });
+  });
+
+  closeServiciosBtn.addEventListener("click", () => {
+    serviciosModal.style.display = "none";
+    serviciosModalVideo.pause();
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === serviciosModal) {
+      serviciosModal.style.display = "none";
+      serviciosModalVideo.pause();
+    }
+  });
+</script>
+
+</section>
+
+
+  <!-- Comunidad --> 
+  <section id="comunidad" class="comunidad">
+    <div class="columna-izquierda">
+      <h2 class="titulo">
+        <span class="negro">¡Forma parte de </span>
+        <span class="naranja">nuestra familia </span>
+        <span class="celeste">dental feliz!</span>
+      </h2>
+      <p class="descripcion">
+        En Odontomed celebramos junto a nuestra comunidad los momentos más especiales del año. Nos encanta compartir
+        sonrisas en cada evento, llevando salud y alegría a todos.
+      </p>
+
+      <div class="swiper comunidad-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="img/evento4.jpg" alt="Celebración con pacientes" /></div>
+          <div class="swiper-slide"><img src="img/evento.jpg" alt="Actividades con niños" /></div>
+          <div class="swiper-slide"><img src="img/evento5.jpg" alt="Equipo de Odontomed en evento" /></div>
+
+        </div>
+        <!-- Botones de navegación -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+  
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <div class="columna-derecha">
+      <div class="swiper comunidad-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="img/comunidad1.jpg" alt="Celebración con pacientes" /></div>
+          <div class="swiper-slide"><img src="img/comunidad2.jpg" alt="Actividades con niños" /></div>
+          <div class="swiper-slide"><img src="img/comunidad3.jpg" alt="Equipo de Odontomed en evento" /></div>
+
+        </div>
+        <!-- Botones de navegación -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <p class="texto-final">
+        Gracias por permitirnos ser parte de sus vidas. Cada fotografía refleja momentos únicos que compartimos con
+        ustedes.
+        Seguimos creciendo con su confianza, y se vienen nuevos proyectos llenos de cariño, compromiso y sonrisas.
+        <br><strong>ODONTOMED</strong> les desea un año lleno de salud, alegría y grandes recuerdos.
+      </p>
+    </div>
+  </section>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.comunidad-swiper', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+    
+    </div>
+  </section>
+
+
+
+<!-- Contacto -->
+<section class="contacto" id="contacto">
+  <div class="container contacto-content">
+    <h2>Contáctanos</h2>
+    <p class="contacto-texto">
+      ¿Tienes preguntas o deseas agendar una cita? Completa el formulario y te responderemos lo antes posible.
+    </p>
+
+    <div class="contacto-grid">
+      <div class="mensaje-simple">
+        <img src="img/contacto.svg" alt="Contáctanos" class="imagen-contacto" />
+        <h3>¿En qué podemos ayudarte?</h3>
+        <p>
+          Nos encanta escucharte. Cuéntanos tus dudas, sugerencias o lo que necesites.<br />
+          Estamos aquí para ti.
+        </p>
+      </div>
+
+      <form class="formulario" action="https://formsubmit.co/rmia1929@gmail.com" method="POST" target="formulario-oculto">
+        <input type="text" name="nombre" placeholder="Nombre completo" required />
+        <input type="email" name="correo" placeholder="Correo electrónico" required />
+        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <button type="submit">Enviar mensaje</button>
+        
+      </form>
+
+  
+      <iframe name="formulario-oculto" style="display:none;" onload="mostrarMensajeExito()"></iframe>
+
+      <!-- Mensaje de éxito -->
+      <p id="mensaje-exito" class="mensaje-exito" style="display:none;">¡Mensaje enviado correctamente!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- WhatsApp flotante --->
+  <a href="https://wa.me/51992048046" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+ <!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+
+    <div class="footer-logo">
+      <img src="img/logo.png" alt="Odontomed Logo" />
+    </div>
+
+    <div class="footer-contacto">
+      <h3>Contacto</h3>
+        <p>
+          <img src="img/ubicacion.png" alt="Ubicación" class="icono" />
+          Mz J Lt 6 La Unión, Cajamarquilla, Lurigancho - Chosica
+          </p>
+        <p><img src="img/telefono.png" alt="Teléfono" class="icono" />+51 992 048 046</p>
+        <p><img src="img/whatsapp.png" alt="Whatsapp" class="icono" />+51 992 048 046</p>
+    </div>
+
+    <div class="footer-horarios">
+      <h3>Horarios</h3>
+      <p><img src="img/horario.png" alt="Horarios" class="icono" /> Lunes a Domingo<br>9:00 am – 9:00 pm</p>
+      <p ><a class="previa-cita" href="#contacto">¡Previa Cita!</a></p>
+    </div>
+
+    <div class="footer-social">
+      <h3>Síguenos</h3>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/limaodontomed"><img src="img/facebook.png" alt="Facebook" /></a>
+        <a href="https://www.instagram.com/odontomed.lima/"><img src="img/instagram.png" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@odontomed.lima?lang=es"><img src="img/tiktok.png" alt="TikTok" /></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+
+  toggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+  });
+</script>
+
+<script src="contacto.js"></script>
+
+</body>
+</html>

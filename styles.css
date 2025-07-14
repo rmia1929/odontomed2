@@ -1,0 +1,1051 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f8fc;
+    color: #333;
+    padding-top: 100px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    padding: 15px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 240px;
+    height: auto;
+    flex-shrink: 0;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav-list a {
+    color: #463f3f;
+    font-family: "Itim", cursive;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Animación hover */
+.nav-list a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #ff9128;
+    transition: width 0.3s ease;
+}
+
+.nav-list a:hover {
+    color: #0073b1;
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+/* Secciones con scroll-margin */
+#nosotros,
+#servicios,
+#comunidad,
+#contacto,
+#inicio {
+    scroll-margin-top: 80px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 180px;
+    }
+
+    .nav-list a {
+        font-size: 16px;
+    }
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 60px;
+        z-index: 1001;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #fff;
+        position: absolute;
+        top: 70px; /* debajo del header */
+        left: 0;
+        right: 0;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+}
+
+
+/* Inicio */
+#inicio {
+    position: relative;
+    background: linear-gradient(
+            90deg,
+            rgba(104, 190, 207, 0.3) 0%,
+            rgba(255, 145, 40, 0.3) 100%
+        ),
+        url("img/portada.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    animation: fadeSlide 1.2s ease-in-out;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* oscurece el fondo */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+.hero-texto {
+    color: #fff;
+}
+
+#titulo-efecto {
+  font-size: 2.5rem;
+  font-weight: bold;
+  white-space: normal; 
+  overflow: visible;   
+  border-right: 2px solid #000;
+  animation: blinkCursor 0.8s step-end infinite;
+  display: inline-block;
+  max-width: 100%; 
+  word-break: break-word; 
+  line-height: 1.3;
+  padding-right: 5px; 
+  text-align: center;
+}
+
+@keyframes blinkCursor {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+@media (max-width: 600px) {
+  #titulo-efecto {
+    font-size: 1.5rem; /* Tamaño menor en celular */
+  }
+}
+
+.hero-texto h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-texto p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.boton {
+    background-color: #007bff;
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+}
+
+.boton:hover {
+    background-color: #ff9128;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 145, 40, 0.4);
+}
+
+/* ANIMACIÓN GENERAL DE ENTRADA */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Nosotros */
+.nosotros {
+  padding: 160px 20px 160px; 
+  background: linear-gradient(
+    90deg,
+    rgba(104, 190, 207, 0.8) 0%,
+    rgba(255, 145, 40, 0.8) 100%
+  );
+  background-size: cover;
+  background-position: center;
+}
+
+.TextoOdontomed{
+  color: #ff9128; 
+  text-decoration: none;
+  cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.TextoOdontomed:hover {
+  color: #007bff; 
+}
+
+.nosotros-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.nosotros-texto {
+  flex: 1 1 400px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  color: #333;
+}
+
+.nosotros-texto h2 {
+  color: #ff9128;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.nosotros-texto p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.nosotros-imagen {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+/* Carrusel personalizado */
+.carrusel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.carrusel img {
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.carrusel .prev,
+.carrusel .next {
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+.carrusel .prev:hover,
+.carrusel .next:hover {
+  transform: scale(1.2);
+}
+
+/* Modal personalizado */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+.modal-contenido {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+.modal-contenido video {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.cerrar-modal {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* RESPONSIVE - Nosotros */
+@media (max-width: 768px) {
+  .nosotros-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nosotros-texto,
+  .nosotros-imagen {
+    max-width: 90%;
+  }
+
+  .carrusel {
+    flex-direction: column;
+  }
+
+  .carrusel .prev,
+  .carrusel .next {
+    font-size: 24px;
+  }
+}
+
+
+/* Servicios */
+.servicios {
+    padding: 30px 20px;
+    background: linear-gradient(
+        90deg,
+        rgba(104, 190, 207, 0.8) 0%,
+        rgba(255, 145, 40, 0.8) 100%
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.servicios h2 {
+    color: #0073b1;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-family: "Itim", cursive;
+}
+
+/* Contenedor de tarjetas */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Tarjeta de servicio */
+.card {
+    position: relative;
+    overflow: hidden;
+    width: calc(33.33% - 30px); 
+    min-width: 260px;
+    max-width: 300px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    flex-grow: 1;
+  overflow: visible;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagen */
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Texto */
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Etiquetas de promoción */
+.card .oferta,
+.card .promo {
+    position: absolute;
+    top: 10px;
+    left: -40px;
+    width: 160px; /* Controlas el ancho */
+    background-color: crimson;
+    color: white;
+    padding: 5px 0;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    text-align: center; /* Centra el texto */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    font-size: 0.85rem;
+    z-index: 2;
+}
+
+.card .promo {
+    background-color: #007bff;
+}
+
+/* Modal */
+#serviciosModal {
+    display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+#serviciosModal .modal-content {
+    background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  z-index: 10000;
+}
+
+#serviciosModal .modal-content video {
+    width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 10000;
+}
+
+.close-servicios {
+    float: right;
+  font-size: 25px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .card {
+        width: calc(50% - 30px); /* 2 tarjetas por fila */
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 100%; /* 1 tarjeta por fila */
+    }
+}
+
+
+/* Comunidad */
+
+.comunidad {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 60px 30px;
+    background: #ffffff;
+    border-left: 10px solid #5ec2df;
+    border-right: 10px solid #ff901f;
+}
+
+.columna-izquierda,
+.columna-derecha {
+    flex: 1 1 400px;
+    max-width: 550px;
+}
+
+.comunidad .titulo {
+  margin-bottom: 4rem;
+}
+
+.comunidad .descripcion {
+  margin-bottom: 2rem;
+}
+
+.comunidad .texto-final {
+  margin-top: 2rem;
+  line-height: 1.6;
+}
+
+.titulo {
+    font-size: 2.7rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.negro {
+    color: #000;
+}
+
+.naranja {
+    color: #ff901f;
+}
+
+.celeste {
+    color: #5ec2df;
+}
+
+.descripcion {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #444;
+    text-align: justify;
+}
+
+.img-evento,
+.img-collage {
+    width: 100%; /* Ajusta esto según el tamaño deseado */
+    max-width: 100%; /* Limita el tamaño máximo */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img-evento:hover,
+.img-collage:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+
+.texto-final {
+    font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+
+.columna-izquierda .swiper-slide img {
+  width: 90%;           
+  max-width: 370px;     
+  height: auto;         
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  display: block;
+}
+
+/*Carrusel izquierda*/
+@media (max-width: 768px) {
+  .columna-izquierda .swiper-slide img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* RESPONSIVE - Comunidad*/
+@media (max-width: 1200px) {
+    .comunidad {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+     .comunidad .titulo {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .comunidad .descripcion {
+    margin-bottom: 4rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .comunidad .texto-final {
+    margin-top: 6rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+    .img-evento,
+    .img-collage {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .texto-final {
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 0 1.2rem;
+  }
+  
+}
+
+
+/* Contacto */
+.contacto {
+    padding: 60px 40px;
+    background: linear-gradient(
+        90deg,
+        rgba(94, 194, 223, 0.3),
+        rgba(255, 144, 31, 0.3)
+    );
+    border-left: 8px solid #5ec2df;
+    border-right: 8px solid #ff901f;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contacto h2 {
+  font-size: 2.4rem;
+  color: #0099b1;
+  margin-bottom: 10px;
+  font-weight: 700;
+   text-align: center;
+}
+
+.contacto-texto {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+   text-align: center;
+}
+
+.contacto-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px; 
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  flex: 1 1 400px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border 0.3s ease;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: #0073b1;
+  outline: none;
+}
+
+.formulario button {
+  background-color: #0073b1;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 115, 177, 0.3);
+}
+
+.formulario button:hover {
+  background-color: #005f94;
+  transform: translateY(-2px);
+}
+
+/* Mensaje lateral izquierdo */
+.mensaje-simple {
+  flex: 1 1 300px;
+  background: linear-gradient(135deg, #ffffff, #f3fcff);
+  padding: 40px 30px; 
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.mensaje-simple h3 {
+  color: #31b3bf;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.mensaje-simple p {
+  line-height: 1.6;
+}
+
+.imagen-contacto {
+  max-width: 370px; 
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.mensaje-exito {
+  display: none;
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacto-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formulario,
+  .mensaje-simple {
+    max-width: 90%;
+  }
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366; 
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E; 
+  transform: scale(1.1);     
+}
+
+
+/* Footer */
+.footer {
+    background-color: white;
+    padding: 40px 20px;
+    position: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo img {
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    color: #333;
+    font-size: 16px;
+}
+
+.footer-contacto,
+.footer-horarios,
+.footer-social {
+    max-width: 260px;
+    font-family: Itim;
+}
+
+.footer h3 {
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: #333;
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+.footer i {
+    color: #68becf;
+    margin-right: 8px;
+}
+
+.footer-contacto p {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.footer-contacto .icono {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-horarios p {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.footer-horarios .icono {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-horarios .previa-cita {
+    color: #fd912a;
+    text-align: center;
+    font-family: Itim;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Animación de aparición */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive ajustes FOOTER */
+@media (max-width: 600px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        height: 65px;
+    }
+
+    .footer h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+
+    .social-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Estilos del anuncio flotante */
+.anuncio-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Imagen del anuncio */
+.anuncio-flotante img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Botón de cerrar */
+.anuncio-flotante button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-end;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.anuncio-flotante button:hover {
+  color: red;
+}
