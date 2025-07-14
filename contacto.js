@@ -1,3 +1,22 @@
+const texto = "Consultorio de Especialidades Odontológicas";
+  const titulo = document.getElementById("titulo-efecto");
+
+  let i = 0;
+  function escribir() {
+    if (i < texto.length) {
+      titulo.textContent += texto.charAt(i);
+      i++;
+      setTimeout(escribir, 80); // Velocidad de escritura
+    }
+  }
+
+window.addEventListener("DOMContentLoaded", escribir);
+document.addEventListener('DOMContentLoaded', iniciarFormulario);
+
+function iniciarFormulario() {
+  const formulario = document.querySelector('.formulario');
+  formulario.addEventListener('submit', manejarEnvioFormulario);
+}
 
 // Validar antes de enviar
 document.addEventListener('DOMContentLoaded', () => {
