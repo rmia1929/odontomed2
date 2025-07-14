@@ -1,4 +1,3 @@
-
 const texto = "Consultorio de Especialidades Odontológicas";
 const titulo = document.getElementById("titulo-efecto");
 
@@ -10,10 +9,9 @@ function escribir() {
     setTimeout(escribir, 80);
   }
 }
-
 window.addEventListener("DOMContentLoaded", escribir);
 
-// Validar 
+// Validar antes de enviar
 document.addEventListener('DOMContentLoaded', () => {
   const formulario = document.querySelector('.formulario');
 
@@ -35,7 +33,7 @@ function obtenerValor(selector) {
   return document.querySelector(selector).value.trim();
 }
 
-// Validar campos
+
 function validarCampos(nombre, correo, mensaje) {
   return (
     nombre.length > 0 &&
@@ -44,7 +42,7 @@ function validarCampos(nombre, correo, mensaje) {
   );
 }
 
-// Mostrar mensaje de éxito 
+// Mostrar mensaje de éxito
 function mostrarMensajeExito() {
   const mensaje = document.getElementById('mensaje-exito');
   const formulario = document.querySelector('.formulario');
@@ -61,27 +59,23 @@ function mostrarMensajeExito() {
 //anuncio flotante//
 window.addEventListener('load', function () {
   setTimeout(function () {
-    // Crear el contenedor del anuncio
+  
     const anuncio = document.createElement('div');
     anuncio.classList.add('anuncio-flotante');
 
-    // Crear botón cerrar
     const cerrarBtn = document.createElement('button');
     cerrarBtn.innerHTML = '&times;';
     cerrarBtn.addEventListener('click', function () {
       anuncio.remove();
     });
 
-    // Crear imagen
     const imagen = document.createElement('img');
-    imagen.src = 'img/anuncio.jpg'; // Cambia a la ruta real de tu imagen
+    imagen.src = 'img/anuncio.jpg'; 
     imagen.alt = 'Promoción del mes';
 
-    // Armar el anuncio
     anuncio.appendChild(cerrarBtn);
     anuncio.appendChild(imagen);
 
-    // Agregar al body
     document.body.appendChild(anuncio);
-  }, 5000); // Mostrar después de 5 segundos
+  }, 5000); 
 });
