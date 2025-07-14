@@ -748,7 +748,8 @@ header {
   color: #0099b1;
   margin-bottom: 10px;
   font-weight: 700;
-   text-align: center;
+  text-align: center;
+  caret-color: transparent;
 }
 
 .contacto-texto {
