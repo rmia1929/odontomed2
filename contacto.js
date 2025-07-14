@@ -1,15 +1,3 @@
-const texto = "Consultorio de Especialidades Odontológicas";
-const titulo = document.getElementById("titulo-efecto");
-
-let i = 0;
-function escribir() {
-  if (i < texto.length) {
-    titulo.textContent += texto.charAt(i);
-    i++;
-    setTimeout(escribir, 80);
-  }
-}
-window.addEventListener("DOMContentLoaded", escribir);
 
 // Validar antes de enviar
 document.addEventListener('DOMContentLoaded', () => {
