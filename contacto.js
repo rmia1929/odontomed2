@@ -11,12 +11,6 @@ const texto = "Consultorio de Especialidades Odontológicas";
   }
 
 window.addEventListener("DOMContentLoaded", escribir);
-document.addEventListener('DOMContentLoaded', iniciarFormulario);
-
-function iniciarFormulario() {
-  const formulario = document.querySelector('.formulario');
-  formulario.addEventListener('submit', manejarEnvioFormulario);
-}
 
 // Validar antes de enviar
 document.addEventListener('DOMContentLoaded', () => {
